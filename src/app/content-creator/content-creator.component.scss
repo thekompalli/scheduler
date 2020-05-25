@@ -1,9 +1,18 @@
 .wrap{
 
     text-align: center;
+    .initMsg{
+        display: flex;
+        color: black;
+    }
+    .initMsg.active{
+        display: none;
+    }
 
+ 
     .insider{
         margin-bottom: 10px;
+      
         button{
             margin-top: 10px;
             border: 2px solid grey;
@@ -17,6 +26,9 @@
         button:hover{
             box-shadow: 0 0 7px 0 grey;
         }
+    }
+    .insider.active{
+        display: flex;
     }
     .container-fluid{
         display: none;
@@ -43,25 +55,125 @@
             color: grey;
             box-shadow: 0 0 10px 0 grey;
         }
+        .save{
+            font-size: 30px;
+            color: grey;
+            background: white;
+            border: 2px solid grey;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .save:hover{
+            transition-duration: .6s;
+            color: dodgerblue;
+            border-color: dodgerblue;
+        }
     }
 
     .viewContent{
+       
         .topicContent{
-            .listGroup{
+            .close{
+                color: red;
+                cursor: pointer;
+               
+            }
+            .listGroups{
                 list-style: none;
                 border: 2px solid rgb(230, 228, 228);
                 background: rgb(230, 228, 228);
                 border-radius: 5px;
-                text-align: left;
+                text-align: center;
                 padding: 10px;
                 margin-bottom: 10px;
+
+
+                .taskShow{
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: white;
+                    border: 2px solid rgb(21, 185, 21);
+                    background: rgb(21, 185, 21);
+                    border-radius: 20px;
+                    right: 150px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                    margin-left: 200px;
+                }
+                .move{
+                    margin-left: 50px;
+                    font-size: 15px;
+                    font-weight: bold;
+                    border: 2px solid rgb(21, 185, 21);
+                    background: rgb(21, 185, 21);
+                    border-radius: 20px;
+                    padding-left: 10px;
+                    padding-right: 10px;
+                }
+                .newEdit{
+                    margin-left: 17px;
+                    background: dodgerblue;
+                    border-color: dodgerblue;
+                    border-radius: 20px;
+                }
+                .newEdit:hover{
+                    transition-duration: .6s;
+                    background: white;
+                    color: dodgerblue;
+                }
             }
-            .listGroup.active{
+            .listGroups.active{
                 color: white;
                 background: rgb(107, 106, 106);
              }
         }
     }
+}
+.insideEdit.active{
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    flex-direction: column;
+    
+        .contentHiddenDiv{
+            color: dodgerblue;
+            height: 50vh;
+            margin-top: 40px;
+        }
+        .instructionsHiddenDiv{
+            color: dodgerblue;
+            height: 50vh;
+            margin-bottom: 40px;
+        }
+        .saveHid{
+            font-size: 30px;
+            color: white;
+            margin-bottom: 100px;
+            border: 2px solid dodgerblue;
+            background: dodgerblue;
+            border-radius: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .saveHid:hover{
+            transition-duration: .6s;
+            color: dodgerblue;
+            background: grey;
+        }
+    
+}
+
+.insideEdit{
+    display: none;
 }
 
 

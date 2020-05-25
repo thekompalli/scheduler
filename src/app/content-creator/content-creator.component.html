@@ -1,9 +1,17 @@
 
 
 <div class="wrap">
-    <div class="insider">
-        <button class="plus" (click) = "divUnhide()">+</button>
-    </div>
+      <div class="insider" *ngIf = "getContent.isHidden == false">
+          <button class="plus" (click) = "divUnhide()">+</button>
+          <div class="topicName">
+            <p>TOPIC</p>
+          </div>
+      </div>
+      <div>
+   
+      </div>
+      
+   
     
     
     <div class="container-fluid" [ngClass] = "{'show': this.isHidden == false}">
@@ -11,34 +19,45 @@
                 <div>
                     <div class="form-group">
                       <label for="title">Title</label>
-                      <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)] = "getContent.dayList[getContent.activeIndex].title">
+                      <input type="text" class="form-control" id="title" placeholder="Title" [(ngModel)] = "getContent.topictitle">
                     </div>
                     <div class="form-group">
                       <label for="type">Type</label>
-                      <select class="form-control" id="type">
-                        <option>TASK</option>
-                        <option>PRE-READ</option>
+                      <select class="form-control" id="type" [(ngModel)] = "getContent.topictype">
+                        <option value="TASK">TASK</option>
+                        <option value="PRE-READ">PRE-READ</option>
                       </select>
                     </div>
                     <div class="form-group">
                       <label for="content">Content</label>
-                      <textarea class="form-control" id="content" rows="3" [(ngModel)] = "getContent.dayList[getContent.activeIndex].content"></textarea>
+                      <textarea class="form-control" id="content" rows="3" [(ngModel)] = "getContent.topicContent"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="instructions">Instructions for Mentor</label>
-                      <textarea class="form-control" id="instructions" rows="3" [(ngModel)] = "getContent.dayList[getContent.activeIndex].instructions"></textarea>
+                      <textarea class="form-control" id="instructions" rows="3" [(ngModel)] = "getContent.topicInstructions"></textarea>
                     </div>
                 </div>
-                <button class="save" (click) = "save()" (click) = "getContent.createTitle()">save</button>
+                <button class="save" (click) = "this.save()" (click) = "getContent.createTitle()">save</button>
         </div>
     </div>
 
     <div class="viewContent">
-        <div class="topicName">
-            <p>TOPIC</p>
+        <div class="topicContent">
+          <li *ngFor = "let i of getContent.titles[getContent.activeIndex]; let j = index" class ="listGroups" (click)="getContent.selectContent(j)" [ngClass]="{'active': getContent.activeContent == j}">{{i.title}}<span class="taskShow">{{i.tp}}</span><span class="move">move</span><span class="close" (click) = "getContent.closeContent(j)">x</span><button class="newEdit" (click) = "edit()">Edit</button></li>
         </div>
-        <div *ngFor = "let i of getContent.titles; let j = index" class="topicContent">
-          <li class ="listGroup" (click)="getContent.selectContent(j)" [ngClass]="{'active': getContent.activeContent == j}">{{i}}</li>
-        </div>
+      
     </div>
+</div>
+
+<div class="insideEdit" [ngClass] = "{'active': this.editHidden == false}">
+  <div class="contentHiddenDiv">
+    <h1>CONTENT</h1>
+    <angular-editor [placeholder]="'Enter Content'" [(ngModel)]="getContent.topicContent"></angular-editor>
+  </div>
+ 
+  <div class="instructionsHiddenDiv">
+    <h1>INSTRUCTIONS</h1>
+    <angular-editor [placeholder] = "'Enter Instructions'" [(ngModel)]= "getContent.topicInstructions"></angular-editor>
+  </div>
+  <button class = "saveHid"  (click) = "closeEdit(); getContent.clearEdit()">Save</button>
 </div>
