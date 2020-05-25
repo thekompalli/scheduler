@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="buttonDiv">
+                <button class="btn btn-danger btn-lg pr-5 pl-5" (click) = "getDay.getDay()">Add Day</button>
+            </div>
+            <div class="totalDays">
+                <p>Days <span [ngStyle] = "{color: 'red'}">({{getDay.dayCount}})</span></p>
+            </div>
+            <div class="dispDays">
+                <div *ngFor = "let day of getDay.dayList; let j = index" class="subclass">
+                    <li class="listGroup" (click)="getDay.select(j)" [ngClass]="{'active': getDay.activeIndex == j}">{{day.dayNum}}<span class="close" (click) = "getDay.closeBtn(j)">x</span></li> 
+                </div>
+            </div>                
+        </div>
+    </div>
+    
+  </div>
+  

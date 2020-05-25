@@ -1,0 +1,67 @@
+.wrap{
+
+    text-align: center;
+
+    .insider{
+        margin-bottom: 10px;
+        button{
+            margin-top: 10px;
+            border: 2px solid grey;
+            background: none;
+            color: grey;
+            border-radius: 50%;
+            text-align: center;
+            padding-bottom: 5px;
+        }
+
+        button:hover{
+            box-shadow: 0 0 7px 0 grey;
+        }
+    }
+    .container-fluid{
+        display: none;
+    }
+    
+    .container-fluid.show{
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        flex-direction: column;
+        .showHid{
+            border: 2px solid white;
+            border-radius: 20px;
+            padding: 50px;
+            background: white;
+            color: grey;
+            box-shadow: 0 0 10px 0 grey;
+        }
+    }
+
+    .viewContent{
+        .topicContent{
+            .listGroup{
+                list-style: none;
+                border: 2px solid rgb(230, 228, 228);
+                background: rgb(230, 228, 228);
+                border-radius: 5px;
+                text-align: left;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            .listGroup.active{
+                color: white;
+                background: rgb(107, 106, 106);
+             }
+        }
+    }
+}
+
+
